@@ -1,0 +1,14 @@
+{
+  "type": "localhost",
+  "cors": {
+    "origin": ["*"]
+  },
+  "collection": {
+    "USER": "users",
+    "AGENT": "agents",
+    "USER_ACCOUNT": "accounts",
+    "POLICY_INFO": "policies",
+    "POLICY_CATEGORY": "policy_categories",
+    "POLICY_CARRIER": "policy_carriers"
+  }
+}
