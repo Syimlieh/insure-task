@@ -13,8 +13,14 @@ const REGEX = {
   TIME_FORMAT: /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/,  //  format HH:mm:ss
 };
 
+const ORDER_DIRECTIONS = {
+  DESC: "DESC",
+  ASC: "ASC",
+};
+
 module.exports = {
   ACCOUNT_TYPE,
   POLICY_TYPE,
   REGEX,
+  ORDER_DIRECTIONS,
 };

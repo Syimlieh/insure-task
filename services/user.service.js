@@ -1,5 +1,6 @@
 const User = require('../schema/user.schema');
 const connectDB = require('../config/db/connect.db');
+const UserPipeline = require('../pipelines/user.pipeline');
 
 // Ensure shared connection in worker threads
 exports.save = async (payload) => {
@@ -16,4 +17,10 @@ exports.findUser = async (query) => {
     throw error;
   }
   return result;
+};
+
+exports.findUsers = async (filters) => {
+  const pipeline = UserPipeline.fetchAggregatedUserPipeline(filters);
+  const results = await User.aggregate(pipeline);
+  return results;
 };

@@ -3,6 +3,16 @@ const logger = require('./logger.utils');
 const formatResponse = (response, data = {}, status = 200) => {
   const isSuccessful = status < 300;
 
+  // Pagination format
+  if (
+    Array.isArray(data) &&
+    data.length === 1 &&
+    data[0].items &&
+    data[0].pagination
+  ) {
+    data = data[0];
+  }
+
   const responseBody = {
     status,
     error: !isSuccessful,
