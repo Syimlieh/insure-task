@@ -25,28 +25,20 @@ const expectedHeaders = [
   'dob',
 ];
 
-const validateHeaders = (sheet) => {
-  const row = sheet.getRow(1);
-  const headerData = {
-    isValid: true,
-    row: 'Header',
-    issues: [],
-    headerMap: {},
-  };
-
+const validateHeaders = (row) => {
+  const headerMap = {};
   expectedHeaders.forEach((headerValue, index) => {
-    const cell = row.getCell(index + 1);
-    const cellText = cell.text ? cell.text.trim() : cell.text;
+    const cellText = row[index + 1] ? row[index + 1].trim() : '';
+    console.log('cellText ----->', cellText);
 
-    if (cellText !== headerValue) {
-      headerData.isValid = false;
-      headerData.issues.push(headerValue);
+    if (cellText === headerValue) {
+      headerMap[headerValue] = index + 1;
     } else {
-      headerData.headerMap[headerValue] = index + 1;
+      throw new Error(`Invalid header: ${cellText}, expected: ${headerValue}`);
     }
   });
 
-  return headerData;
+  return headerMap;
 };
 
 const parseRowData = (row, headerMap) => {

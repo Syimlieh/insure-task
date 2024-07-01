@@ -6,6 +6,6 @@ const { uploadExcel } = require('../controllers/upload-excel.controller');
 
 const upload = multer({ dest: 'uploads/' });
 
-router.post('/upload', upload.single('file'), uploadExcel);
+router.post('/', upload.single('file'), uploadExcel);
 
 module.exports = router;

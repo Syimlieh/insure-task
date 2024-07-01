@@ -8,6 +8,7 @@ const dbConnect = require('./config/db/connect.db.js');
 const logger = require('./utils/logger.utils.js');
 const limiter = require('./middleware/rate-limiter.middleware.js');
 const errorHandler = require('./middleware/errors/error-handler.error.js');
+const { startMonitoring } = require('./utils/cpu-monitor.utils.js');
 
 const PORT = process.env.PORT || 4000;
 
@@ -32,6 +33,14 @@ dbConnect()
 // Endpoints
 require('./routes.js')(app);
 
+app.get('/simulate-cpu', (req, res) => {
+  const end = Date.now() + 10000;
+  while (Date.now() < end) { 
+    logger.info('looping...........')
+  }
+  res.send('CPU usage simulated!');
+});
+
 app.get('/', async (req, res) => {
   res.send('Hello World!');
 });
@@ -49,6 +58,9 @@ app.use('*', (req, res) => {
 });
 
 app.use(errorHandler);
+
+// Start CPU monitoring when the server starts
+startMonitoring();
 
 app.listen(PORT, () => {
   logger.info(`Backend Server running on PORT: ${PORT}`);
