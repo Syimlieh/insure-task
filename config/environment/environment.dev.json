@@ -9,6 +9,8 @@
     "USER_ACCOUNT": "accounts",
     "POLICY_INFO": "policies",
     "POLICY_CATEGORY": "policy_categories",
-    "POLICY_CARRIER": "policy_carriers"
+    "POLICY_CARRIER": "policy_carriers",
+    "TEMP_SCHEDULE_MESSAGE": "temp_schedule_messages",
+    "SCHEDULE_MESSAGE": "schedule_messages"
   }
 }

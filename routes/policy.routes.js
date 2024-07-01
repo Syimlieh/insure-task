@@ -4,6 +4,6 @@ const { findPoliciesByUsername } = require('../controllers/policy.controller');
 
 const router = express.Router();
 
-router.post('/:username', findPoliciesByUsername);
+router.get('/:username', findPoliciesByUsername);
 
 module.exports = router;

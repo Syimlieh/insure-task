@@ -1,6 +1,7 @@
 const HeartbeatRoutes = require('./routes/heartbeat.routes');
 const UploadDataRoutes = require('./routes/upload-excel.routes');
 const PolicyRoutes = require('./routes/policy.routes');
+const ScheduleRoutes = require('./routes/schedule.routes');
 
 module.exports = (server) => {
   server.use('/api/v1/heartbeat', HeartbeatRoutes);
@@ -8,4 +9,6 @@ module.exports = (server) => {
   server.use('/api/v1/upload', UploadDataRoutes);
 
   server.use('/api/v1/policy', PolicyRoutes);
+
+  server.use('/api/v1/schedule', ScheduleRoutes);
 };

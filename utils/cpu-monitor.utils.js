@@ -53,7 +53,7 @@ function monitorCpuUsage() {
         return;
       }
 
-      pm2.restart('my-app', (err) => {
+      pm2.restart('server', (err) => {
         if (err) {
           logger.error('Error restarting server:', err);
           pm2.disconnect();

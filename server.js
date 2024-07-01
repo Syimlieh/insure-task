@@ -35,8 +35,8 @@ require('./routes.js')(app);
 
 app.get('/simulate-cpu', (req, res) => {
   const end = Date.now() + 10000;
-  while (Date.now() < end) { 
-    logger.info('looping...........')
+  while (Date.now() < end) {
+    logger.info('looping...........');
   }
   res.send('CPU usage simulated!');
 });
@@ -65,3 +65,5 @@ startMonitoring();
 app.listen(PORT, () => {
   logger.info(`Backend Server running on PORT: ${PORT}`);
 });
+
+require('./scheduler/message.schedule.js');
