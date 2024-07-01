@@ -15,14 +15,11 @@ exports.findPoliciesByUsername = async (req, res) => {
     */
   try {
     const { username } = req.params;
-    if (!username) {
-      return formatResponse(res, { error: 'Username is required.' }, 400);
-    }
 
     // Find the user by username
     const user = await UserService.findUser({ firstName: username });
     // Find policies by userId
-    const policies = await PolicyInfoService.find({
+    const policies = await PolicyInfoService.findOne({
       userId: user?._id,
     });
     return formatResponse(res, policies, 200);

@@ -5,7 +5,7 @@ exports.save = async (payload) => {
   return await policyInfo.save();
 };
 
-exports.find = async (query) => {
-  const results = await PolicyInfo.find(query);
+exports.findOne = async (query) => {
+  const results = await PolicyInfo.findOne(query).populate("userId");
   return results;
 };

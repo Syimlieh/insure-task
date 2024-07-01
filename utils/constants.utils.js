@@ -1,8 +1,3 @@
-const USER_ACTIVE_TYPE = {
-  ACTIVE: 'ACTIVE',
-  IN_ACTIVE: 'IN_ACTIVE',
-};
-
 const ACCOUNT_TYPE = {
   PERSONAL: 'Personal',
   COMMERCIAL: 'Commercial',
@@ -13,8 +8,13 @@ const POLICY_TYPE = {
   PACKAGE: 'Package',
 };
 
+const REGEX = {
+  DAY_FORMAT: /^\d{4}-\d{2}-\d{2}$/,   // format YYYY-MM-DD
+  TIME_FORMAT: /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/,  //  format HH:mm:ss
+};
+
 module.exports = {
-  USER_ACTIVE_TYPE,
   ACCOUNT_TYPE,
   POLICY_TYPE,
+  REGEX,
 };
