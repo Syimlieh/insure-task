@@ -13,6 +13,7 @@ const UserAccountService = require('../services/user-account.service');
 const PolicyCategoryService = require('../services/policy-category.service');
 const PolicyCarrierService = require('../services/policy-carrier.service');
 const PolicyService = require('../services/policy-info.service');
+const AgentService = require('../services/agent.service');
 
 const processCSVFile = async (filePath) => {
   try {
@@ -30,6 +31,7 @@ const processCSVFile = async (filePath) => {
     const policyCarriersMap = new Map();
     const policyCategoriesMap = new Map();
     const userAccountsMap = new Map();
+    const agentsMap = new Map();
 
     for (let i = 2; i <= sheet.rowCount; i++) {
       const row = sheet.getRow(i);
@@ -86,12 +88,19 @@ const processCSVFile = async (filePath) => {
           userAccountPayload,
         );
 
+        const agentPayload = {
+          agentName: rowData.data['agent'],
+        };
+
+        const agentId = await saveIfNotExists(AgentService, agentsMap, agentPayload);
+
         // Create policy payload
         const policyPayload = {
           policyCategoryId,
           policyCarrierId,
           userId,
           userAccountId,
+          agentId,
           agent: rowData.data['agent'],
           policyMode: rowData.data['policy_mode'],
           producer: rowData.data['producer'],

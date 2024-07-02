@@ -29,7 +29,6 @@ const validateHeaders = (row) => {
   const headerMap = {};
   expectedHeaders.forEach((headerValue, index) => {
     const cellText = row[index + 1] ? row[index + 1].trim() : '';
-    console.log('cellText ----->', cellText);
 
     if (cellText === headerValue) {
       headerMap[headerValue] = index + 1;

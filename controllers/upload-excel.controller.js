@@ -28,7 +28,6 @@ exports.uploadExcel = async (req, res) => {
 
     let responseSent = false;
     worker.on('message', (message) => {
-      console.log('message ---->', message);
       if (message.status === 'done') {
         responseSent = true;
         return formatResponse(res, message, 200);

@@ -28,6 +28,11 @@ const PolicyInfoSchema = new Schema(
       ref: config.collection.USER,
       required: true,
     },
+    agentId: {
+      type: Schema.Types.ObjectId,
+      ref: config.collection.AGENT,
+      required: true,
+    },
     userAccountId: {
       type: Schema.Types.ObjectId,
       ref: config.collection.USER_ACCOUNT,
