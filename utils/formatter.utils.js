@@ -16,7 +16,7 @@ const formatResponse = (response, data = {}, status = 200) => {
   const responseBody = {
     status,
     error: !isSuccessful,
-    count: isSuccessful ? (Array.isArray(data) ? data.length : 1) : 0,
+    count: isSuccessful ? (Array.isArray(data) ? data.length : data?.items?.length || 1) : 0,
     issues: !isSuccessful ? (Array.isArray(data) ? data : [data]) : [],
     data: isSuccessful ? (Array.isArray(data) ? { items: data } : data) : {},
   };

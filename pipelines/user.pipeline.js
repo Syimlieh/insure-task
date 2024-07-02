@@ -11,9 +11,8 @@ const fetchAggregatedUserPipeline = (filters) => {
     as: "policy",
   };
 
-  const $unwind = { path: "$policy" };
   const pipeline = fetchFilterPipeline(filters);
-  return [ { $lookup }, { $unwind }, ...pipeline];
+  return [ { $lookup }, ...pipeline];
 };
 
 module.exports = {

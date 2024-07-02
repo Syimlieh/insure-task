@@ -10,7 +10,7 @@ exports.save = async (payload) => {
 };
 
 exports.findUser = async (query) => {
-  const result = await User.findOne(query);
+  const result = await User.findOne(query).lean();
   if (!result) {
     const error = new Error(`User Not Found.`);
     error.statusCode = 404;
