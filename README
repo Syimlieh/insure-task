@@ -1,3 +1,6 @@
+For Testing API's, I have added swagger UI.
+    - /api-docs
+    
 Upload a CSV file to this API:
     - api/v1/upload/
 
