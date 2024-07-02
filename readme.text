@@ -1,0 +1,27 @@
+Upload a CSV file to this API:
+    - api/v1/upload/
+
+Finding policy with the help of the username Api:
+    - /api/v1/policy/Lura%20Lucca
+
+Aggregate Api which gives all users along with respective policies.
+    - /api/v1/user/?limit=10&page=1&order_by=updatedAt&order_direction=DESC
+
+Track real-time CPU utilization of the node server and on 70% usage restart the server.
+    - Monitor the server using PM2 Command to monitor is (pm2 monit)
+    - Start the server using PM2 (pm2 start server.js)
+    - For closing the server (pm2 stop server)
+    - In case we need to simulate High CPU usage. We can call this api from browser. (/simulate-cpu)
+
+Schedule Save message at a particular time to our main DB. We are persisting our message in a temp_collection
+    - /api/v1/schedule/
+        {
+            "message": "This message will schedule to save on our desired table on a later time",
+            "day": "2024-07-01",
+            "time": "14:30:00"
+        }
+
+        This message will be schedule to save to our main db at the given time. There will be a 5 minutes time difference. As i used Recurrent interval schdular which check for pending message to be move every 5 minutes. 
+        Depending on the requirement we can take a different approach and save this at a particular date and time by fetching all pending to move messsage when the server start and schedule it using node-schedule at a particular date and time.
+        For persisting temp message. Depending on the requirement. We can either use our primary db or use something like redis which is more lightweight and fast.  
+
